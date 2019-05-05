@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
@@ -28,18 +29,14 @@ public class Task5 implements Task {
         final int[] array = arrayFactory.getInstance(20);
 
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < array.length; i++) {
-            list.add(array[i]);
-        }
-
         Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < array.length; i++) {
-            set.add(array[i]);
-            
-        }
-
+        
+        list = collectionFill(list, array);
+        set = collectionFill(set, array);
+        
+//        Вынес цикл в обобщенный метод
         /**
-         * TODO(Студент): Выполните задание №5
+         *  Выполнено задание №5
          *
          * 1. Проинициализированы переменные list и set объектами
          *    подходящих классов.
@@ -49,5 +46,11 @@ public class Task5 implements Task {
          * 3. С использованием отладчика проверена корректность
          *    выполнения задания.
          */
+    }
+    static <T extends Collection<Integer>> T collectionFill(T x, int[] y) {
+        for (int i = 0; i < y.length; i++) {
+            x.add(y[i]);
+        }
+        return x;
     }
 }

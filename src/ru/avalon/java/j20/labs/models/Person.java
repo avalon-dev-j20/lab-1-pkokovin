@@ -52,23 +52,16 @@ public class Person {
         hash = 53 * hash + Objects.hashCode(this.surname);
         return hash;
     }
-
+//    переписал с использованием instanceof
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (!(obj instanceof Person))
+        return false;
         final Person other = (Person) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (!this.name.equalsIgnoreCase(other.name)) {
             return false;
         }
-        if (!Objects.equals(this.surname, other.surname)) {
+        if (!this.surname.equalsIgnoreCase(other.surname)) {
             return false;
         }
         return true;

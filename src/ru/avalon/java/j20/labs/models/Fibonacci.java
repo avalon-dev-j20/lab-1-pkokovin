@@ -28,11 +28,15 @@ public class Fibonacci implements Iterable<Integer> {
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
+    
+    /**
+     * Реализовал с использованием 2х переменных
+     */
     private class FibonacciIterator implements Iterator<Integer> {
         private int i;
-        private int beforeprev = 0;
-        private int prev = 1;
-        private int curr;
+//        private int beforeprev = 0;
+        private int prev = 0;
+        private int curr = 1;
 
         /**
          * Определяет, есть ли следующее значение
@@ -55,15 +59,21 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            if (i == 0) curr = beforeprev;
-            if (i == 1) curr = prev;
-            if (i == 2) curr = prev;
-            i++;
-            if (i > 2) {
-                curr = beforeprev + prev;
-                beforeprev = prev;
+            if (i == 0) {
+                i++;
+                return prev;
+            }            
+            if (i == 1) {
+                i++;
+                return curr;
+            }
+            
+            if (i > 1) {
+                curr += prev;
+//                beforeprev = prev;
                 prev = curr;
             }
+            i++;
             return curr;
         }
     }

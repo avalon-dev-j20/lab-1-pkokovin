@@ -20,6 +20,14 @@ public final class Numbers {
         for (E value : values) sum += value.doubleValue();
         return sum;
     }
+    
+    public static int sum(Iterable<? extends Number> numbers) {
+        int sum = 0;
+        for(Number x: numbers){
+            sum += Integer.parseInt(x.toString());
+        }
+        return sum;
+    }
 
     /**
      * Выполняет поиск среднего арифметического заданного

@@ -4,6 +4,7 @@ import ru.avalon.java.j20.labs.Task;
 
 import java.util.Iterator;
 import ru.avalon.java.j20.labs.models.Fibonacci;
+import ru.avalon.java.j20.labs.models.Numbers;
 
 /**
  * Задание №3
@@ -12,18 +13,12 @@ import ru.avalon.java.j20.labs.models.Fibonacci;
  */
 public class Task3 implements Task {
       
-    public static int sum(Iterable<? extends Number> numbers) {
-        int sum = 0;
-        for(Number x: numbers){
-            sum += Integer.parseInt(x.toString());
-        }
-        return sum;
-    }
     
+    // перенес метод sum принимающий Iterable в класс Numbers
     @Override
     public void run() {
-        Iterable<Integer> numbers = new Fibonacci(20);
-        int summa = sum(numbers);
+        Iterable<Integer> numbers = new Fibonacci(20); 
+        int summa = Numbers.sum(numbers);
         /*
          * Выполнено задание №3
          *
