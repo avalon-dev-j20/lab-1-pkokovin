@@ -11,12 +11,21 @@ public final class Numbers {
     /**
      * Возвращает сумму значений переданного массиа.
      *
+     * @param <E>
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
+    public static <E extends Number> double sum(E[] values) {
+        double sum = 0.0;
+        for (E value : values) sum += value.doubleValue();
+        return sum;
+    }
+    
+    public static int sum(Iterable<? extends Number> numbers) {
         int sum = 0;
-        for (int value : values) sum += value;
+        for(Number x: numbers){
+            sum += Integer.parseInt(x.toString());
+        }
         return sum;
     }
 
@@ -24,10 +33,11 @@ public final class Numbers {
      * Выполняет поиск среднего арифметического заданного
      * массива чисел.
      *
+     * @param <E>
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
+    public static <E extends Number> double avg(E[] values) {
         return (double) sum(values) / values.length;
     }
 
@@ -38,8 +48,8 @@ public final class Numbers {
      * @param b второе значение
      * @return большее из двух значений
      */
-    public static int max(int a, int b) {
-        return a > b ? a : b;
+    public static <E extends Number> E max(E a, E b) {
+        return a.doubleValue() > b.doubleValue() ? a : b;
     }
 
     /**
